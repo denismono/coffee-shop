@@ -97,3 +97,49 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 [![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/gatsbyjs/gatsby-starter-hello-world)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+This project is created from the template at https://github.com/joeattardi/coffee-shop-starter via Use this templat eoption in Github
+gatsby develop
+
+Set up a new site in Netlify
+Chanhe the site time in Site settings, Site details-site information
+
+npm install netlify-cms-app@2.12.15 gatsby-plugin-netlify-cms@4.3.5
+
+Change the config.yml in static/admin
+
+Add this to gatsby-config.js
+plugins: [
+'gatsby-plugin-netlify-cms'
+]
+
+Configure Netlify Identity and Git Gateway (page 51)
+
+npm install gatsby-source-filesystem@2.3.14
+
+Change gatsby-config.js
+
+plugins: [
+'gatsby-plugin-netlify-cms',
+{
+resolve: 'gatsby-source-filesystem',
+options: {
+name: 'blog',
+path: 'src/blog'
+}
+}
+]
+
+npm install gatsby-transformer-remark@2.8.19
+
+plugins: [
+'gatsby-plugin-netlify-cms',
+{
+resolve: 'gatsby-source-filesystem',
+options: {
+name: 'blog',
+path: 'src/blog'
+}
+},
+'gatsby-transformer-remark'
+]
