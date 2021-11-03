@@ -143,3 +143,13 @@ path: 'src/blog'
 },
 'gatsby-transformer-remark'
 ]
+
+Implement blog post component
+implement blog list component
+Add gatsby-node.js
+
+Add gatsby-node.js
+handle onCreateNode to create blog pages
+
+Create blog page template in src/templates
+Implement createPages in gatsby-node.js
