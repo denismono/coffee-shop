@@ -14,13 +14,19 @@ export default function IndexPage() {
           title
         }
       }
+      markdownRemark(frontmatter: { contentKey: { eq: "indexPage" } }) {
+        frontmatter {
+          tagline
+          heroImage
+        }
+      }
     }
   `)
 
   return (
     <Layout>
-      <div id={styles.hero}>
-        <h1>{data.site.siteMetadata.title}</h1>
+      <div id={styles.hero} style={{ backgroundImage: `url('${heroImage}')` }}>
+        <h1>{tagline}</h1>
       </div>
       <BlogList />
     </Layout>
