@@ -23,6 +23,9 @@ export default function IndexPage() {
     }
   `)
 
+  const tagline = data.markdownRemark.frontmatter.tagline
+  const heroImage = data.markdownRemark.frontmatter.heroImage
+
   return (
     <Layout>
       <div id={styles.hero} style={{ backgroundImage: `url('${heroImage}')` }}>
