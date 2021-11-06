@@ -117,7 +117,7 @@ Configure Netlify Identity and Git Gateway (page 51)
 
 npm install gatsby-source-filesystem@2.3.14
 
-Change gatsby-config.js
+Change gatsby-config.js (page 72)
 
 plugins: [
 'gatsby-plugin-netlify-cms',
@@ -130,7 +130,7 @@ path: 'src/blog'
 }
 ]
 
-npm install gatsby-transformer-remark@2.8.19
+npm install gatsby-transformer-remark@2.8.19 (page 72)
 
 plugins: [
 'gatsby-plugin-netlify-cms',
@@ -148,8 +148,60 @@ Implement blog post component
 implement blog list component
 Add gatsby-node.js
 
-Add gatsby-node.js
-handle onCreateNode to create blog pages
-
+handle onCreateNode to create blog pages to add slug field
 Create blog page template in src/templates
 Implement createPages in gatsby-node.js
+
+Add pagination (page 100)
+
+Add support for other content types in the config.yml via contentKey (page 114)
+
+Add another filesystem source for sourcing page data (page 126)
+
+{
+resolve: "gatsby-source-filesystem",
+options: {
+name: "pageData",
+path: "src/pageData",
+},
+}
+
+Add support for images
+npm install gatsby-plugin-sharp@2.6.17 gatsby-transformer-sharp@2.5.10 gatsby-remark-relative-images@0.3.0 gatsby-remark-images@3.3.17 gatsby-background-image@1.1.1
+
+gatsby-config
+
+{
+resolve: "gatsby-source-filesystem",
+options: {
+name: "images",
+path: "static/img",
+},
+},
+
+    ...
+
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: ["gatsby-remark-relative-images", "gatsby-remark-images"],
+      },
+    },
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+
+gatsby-node.js
+
+const { fmImagesToRelative } = require('gatsby-remark-relative-images');
+exports.onCreateNode = function({ node, getNode, actions }) {
+fmImagesToRelative(node);
+
+change usage of images in GraphQL - index.js
+
+heroImage {
+childImageSharp {
+fluid {
+...GatsbyImageSharpFluid
+}
+}
+}
