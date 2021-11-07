@@ -27,5 +27,9 @@ categories:
       - name: Hot Cocoa
         description: Steamed milk with chocolate syrup
         price: $1.49
-  - name: Test category
+  - name: Bakery
+    items:
+      - description: Made with farm fresh blueberries
+        name: Blueberry Miffin
+        price: $3.99
 ---
